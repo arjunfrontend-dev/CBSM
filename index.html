@@ -83,6 +83,17 @@
           
         }
 
+         .btn {
+      display:inline-block; padding:12px 28px; border-radius:32px;
+      background:#e85f30; color:#fff; font-weight:500; text-decoration:none;
+      transition:transform 0.2s, background 0.3s;
+      animation:fadeInUp 1.8s ease;
+          position: absolute;
+    bottom: 24%;
+    right: 23%;
+    }
+    .btn:hover { transform:scale(1.05); background:#df8622;    }
+
         @media (max-width: 768px) {
             .text-overlay {
                 font-size: 1.2rem;
@@ -133,6 +144,13 @@
     .about-text p { font-size:1rem; line-height:1.6; margin-bottom:15px; color:#333; }
     .about-text .highlight { color:#cf0000; font-weight:600; }
 
+    .btn-about {
+      display:inline-block; padding:12px 28px; border-radius:32px;
+      background:#e85f30; color:#fff; font-weight:500; text-decoration:none;
+      transition:transform 0.2s, background 0.3s;
+      animation:fadeInUp 1.8s ease;
+    }
+ .btn-about:hover { transform:scale(1.05); background:#df8622;    }
    /* OFFERS */
 #offers {
   padding: 80px 20px;
@@ -291,12 +309,14 @@
               
                 <img src="assets/images/banner.png" alt="Slide 1">
                 <div class="text-overlay">ఇప్పుడు షాపింగ్ కూడా పండుగే ప్రతీ కొనుగోలుపై అదిరే డిస్కౌంట్</div>
+                  <a href="#offers" class="btn">Explore Collections</a>
             </div>
 
             <div class="slide">
               
                 <img src="assets/images/banner.png" alt="Slide 2">
                 <div class="text-overlay">ఇకపై స్పెషల్ ఆఫర్లు అందుబాటులో ఉన్నాయి</div>
+                  <a href="#offers" class="btn">Explore Collections</a>
             </div>
         </div>
     </div>
@@ -319,7 +339,9 @@
           From festive fashion to family favorites, our collections are crafted to make your celebrations brighter.
           And this year, the gifts keep coming — because every purchase brings a surprise waiting just for you.
         </p>
+            <p> <a href="#offers" class="btn-about">Explore Collections</a></p>
       </div>
+     
     </div>
   </section>
 
