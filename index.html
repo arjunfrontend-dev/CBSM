@@ -2,321 +2,424 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chandana Brothers – Festival of Gifts</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #333;
-      overflow-x: hidden;
-    }
-    html { scroll-behavior: smooth; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter', sans-serif; color:#333; background:#fff; overflow-x:hidden; }
+    html { scroll-behavior:smooth; }
 
-    header {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
+    /* HEADER / LOGO */
+    nav {
+      position:absolute; top:-6px; left:20px; z-index:10;
     }
-    header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('assets/images/hero-chandana.jpg') center/cover no-repeat;
-      animation: zoomLoop 8s ease-in-out infinite alternate;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
+    nav img.logo {
+      width:120px;
+      border-radius:8px;
+      background:#fff;
+      padding:6px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.15);
     }
 
-    @keyframes zoomLoop {
-      from { transform: scale(1); }
-      to   { transform: scale(1.08); }
-    }
+    /* HERO */
 
-    .hero-logo {
-      position: absolute;
-      top: 20px; left: 20px;
-      width: clamp(80px, 10vw, 120px);
-      z-index: 3;
-      background: #fff;
-      border-radius: 8px;
-      animation: fadeInDown 1s ease forwards;
+    .hero { position:relative; height:100vh; overflow:hidden;background: url('./assets/images/bannerBG.png') no-repeat center center/cover;  }
+    .hero-slides img {
+      position:absolute; inset:0;
+      width:100%; height:100%; object-fit:cover;
+      opacity:0; animation:slideShow 23s infinite;
     }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      max-width: 800px;
-      padding: 0 20px;
+    .hero-slides img:nth-child(1){ animation-delay:0s; }
+    .hero-slides img:nth-child(2){ animation-delay:6s; }
+    .hero-slides img:nth-child(3){ animation-delay:12s; }
+    @keyframes slideShow {
+ 0%, 20% { opacity: 1; }
+  33%, 100% { opacity: 0; }
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 12px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-      animation-delay: 0.2s;
-      color: #e8dc30;
+   
+    .hero-text {
+      position:relative; z-index:2;
+      top:50%; transform:translateY(-50%);
+      text-align:center; padding:0 20px; color:#fff;
     }
-    header p {
-      font-size: clamp(1rem, 1.6vw, 1.3rem);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-      animation-delay: 0.4s;
+    .hero-text h1 {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(2rem,4vw,3rem);
+      margin-bottom:10px; color:#ffd700;
+      animation:fadeInUp 1.2s ease;
+    }
+    .hero-text p {
+      font-size:clamp(1rem,1.6vw,1.2rem);
+      margin-bottom:20px; animation:fadeInUp 1.5s ease;
     }
     .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 32px;
-      background: #e85f30;
-      color: #111;
-      font-weight: 500;
-      text-decoration: none;
-      opacity: 0;
-      transition: transform 0.2s ease, background 0.2s ease;
-      animation: fadeInUp 1s ease forwards;
-      animation-delay: 0.6s;
+      display:inline-block; padding:12px 28px; border-radius:32px;
+      background:#e85f30; color:#fff; font-weight:500; text-decoration:none;
+      transition:transform 0.2s, background 0.3s;
+      animation:fadeInUp 1.8s ease;
     }
-    .btn:hover { transform: scale(1.05); background: #00a89a; }
-
+    .btn:hover { transform:scale(1.05); background:#df8622; }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
-    canvas#effects {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
+    /* PARTICLES CANVAS */
+    #particles {
+      position:absolute; inset:0; width:100%; height:100%;
+      z-index:0; pointer-events:none;
+    }
+
+    /* SECTION BASE */
+    section {
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 1s ease;
+    }
+    section.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* ABOUT */
+    #about {
+      background:linear-gradient(180deg, #fff9e6 0%, #ffe066 100%);
+      padding:80px 20px;
+    }
+    .about-container {
+      max-width:1200px; margin:0 auto;
+      display:flex; flex-wrap:wrap; gap:40px; align-items:center;
+    }
+    .about-image { flex:1 1 300px; text-align:center; }
+    .about-image img {
+      max-width:260px; border-radius:50%;
+      box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    }
+    .about-text { flex:1 1 500px; }
+    .about-text h2 {
+      font-family:'Playfair Display',serif; font-size:2rem;
+      margin-bottom:20px; color:#e85f30; position:relative;
+    }
+    .about-text h2::after {
+      content:""; position:absolute; bottom:-8px; left:0;
+      width:60px; height:3px; background:#cf0000; border-radius:2px;
+    }
+    .about-text p { font-size:1rem; line-height:1.6; margin-bottom:15px; color:#333; }
+    .about-text .highlight { color:#cf0000; font-weight:600; }
+
+   /* OFFERS */
+#offers {
+  padding: 80px 20px;
+  background: #fff4b2;
+}
+
+#offers h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #e85f30;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#offers .subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+.offers-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.offer-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.offer-card img.offer-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.offer-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #e85f30;
+}
+
+.offer-card p {
+  font-size: 1rem;
+  color: #444;
+}
+
+.ribbon {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80px;
+  background: #e85f30;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 4px 0;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+    /* CONTACT */
+    #contact {
+      padding:80px 20px;
+      background:linear-gradient(135deg, #111, #222);
+      color:#fff;
+    }
+    #contact h2 {
+      text-align:center; font-size:2rem;
+      color:#e85f30; font-family:'Playfair Display', serif;
+      margin-bottom:30px;
+    }
+    .contact-wrapper {
+      max-width:1100px; margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+    .contact-info {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .contact-card {
+      background:#1c1c1c;
+      padding:20px;
+      border-radius:12px;
+      text-align:center;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-card:hover { transform:translateY(-5px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+    .contact-card h3 { color:#e85f30; margin-bottom:8px; font-size:1.1rem; }
+    .contact-card p { font-size:0.95rem; color:#ccc; }
+    .contact-map {
+      min-height:320px; border-radius:12px;
+      overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.3);
+    }
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+    /* FOOTER */
+    footer {
+      background:#e85f30;
+      padding:40px 20px;
+      border-top:3px solid #8d2502;
+      text-align:center;
+    }
+    .footer-container { max-width:1200px; margin:0 auto; }
+    .footer-social { margin-bottom:15px; }
+    .footer-social a {
+      margin:0 12px; font-size:1rem; color:#fff;
+      font-weight:500; text-decoration:none;
+      transition:color 0.3s ease, border-bottom 0.3s ease;
+    }
+    .footer-social a:hover { color:#cf0000; border-bottom:2px solid #cf0000; }
+    footer p { margin:0; font-size:0.9rem; color:#fff; }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .about-container { flex-direction:column; text-align:center; }
+      .about-text h2::after { left:50%; transform:translateX(-50%); }
+      .contact-wrapper { grid-template-columns:1fr; }
+      .contact-info { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <img class="hero-logo" src="assets/images/logo.jpg" alt="Chandana Brothers Logo">
-    <div class="hero-inner">
-      <h1>Chandana's Festival of Gifts</h1>
-      <p>Festival of Gifts • Fashion • Lifestyle • Tradition</p>
-      <a class="btn" href="#about">Explore Collections</a>
+    <nav>
+      <img src="./assets/images/logo.png" alt="Chandana Brothers" class="logo">
+    </nav>
+
+    <div class="hero">
+      <div class="hero-slides">
+        <img src="./assets/images/hero-chandana.jpg" alt="Festival Fashion">
+        <img src="./assets/images/hero-chandana.jpg" alt="Festive Shopping">
+        <img src="./assets/images/hero-chandana.jpg" alt="Traditional Looks">
+      </div>
+      <div class="hero-overlay"></div>
+      <canvas id="particles"></canvas>
+
+      <div class="hero-text">
+        <h1>Chandana's Festival of Gifts</h1>
+        <p>Celebrate with Fashion, Lifestyle & Tradition</p>
+        <a href="#offers" class="btn">Explore Collections</a>
+      </div>
     </div>
-    <canvas id="effects"></canvas>
   </header>
 
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="./assets/images/festival logo.png" alt="Festival Badge">
+      </div>
+      <div class="about-text">
+        <h2>Why Choose <span class="highlight">Chandana Brothers?</span></h2>
+        <p>
+          At Chandana Brothers, the season of lights and traditions comes alive with our
+          <span class="highlight">Festival of Gifts Campaign</span>. Every shopping bag you take home brings
+          more happiness, more offers, and more gifts.
+        </p>
+        <p>
+          From festive fashion to family favorites, our collections are crafted to make your celebrations brighter.
+          And this year, the gifts keep coming — because every purchase brings a surprise waiting just for you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section id="offers">
+  <h2>Celebrate this Dasara & Diwali 🎉</h2>
+  <p class="subtitle">with endless joy, surprises, and gifts!</p>
+
+  <div class="offers-grid">
+    <div class="offer-card">
+      <div class="ribbon">FREE</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/6245/6245115.png" alt="Thermo Flask Icon" class="offer-image">
+        <h3>₹1500+</h3>
+      <p>Tea Flask Gift Pack</p>
+    </div>
+    
+    <div class="offer-card">
+      <div class="ribbon">FREE</div>
+  <img src="https://cdn-icons-png.flaticon.com/512/4490/4490482.png" alt="Kitchen Icon" class="offer-image">
+      <h3>₹5000+</h3>
+      <p>Stylish Kitchen Set</p>
+    </div>
+    
+    <div class="offer-card">
+      <div class="ribbon">FREE</div>
+  <img src="https://cdn-icons-png.flaticon.com/512/1691/1691819.png" alt="Dinner Icon" class="offer-image">
+   <h3>₹10,000+</h3>
+      <p>Premium Dinner Set</p>
+    </div>
+    
+    <div class="offer-card">
+      <div class="ribbon">FREE</div>
+  <img src="https://cdn-icons-png.flaticon.com/512/3938/3938540.png" alt="Open Box Icon" class="offer-image">
+      <h3>₹20,000+</h3>
+      <p>Exclusive Surprise Pack</p>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>Address</h3>
+          <p>Patny Central Mall, 262,<br>Sarojini Devi Rd,<br> Secunderabad, Telangana 500003</p>
+        </div>
+        <div class="contact-card">
+          <h3>Phone</h3>
+          <p>+91 40 1234 5678</p>
+        </div>
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p>info@chandanabrothers.com</p>
+        </div>
+        <div class="contact-card">
+          <h3>Hours</h3>
+          <p>Mon–Sun: 10:00 AM – 9:00 PM</p>
+        </div>
+      </div>
+      <div class="contact-map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3806.40093884242!2d78.4917469759112!3d17.44051385127106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sPatny%20Central%20Mall%2C%20262%2C%20Sarojini%20Devi%20Rd%2C%20Secunderabad%2C%20Telangana%20500003!5e0!3m2!1sen!2sus!4v1757765344279!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">Twitter</a>
+      </div>
+      <p>&copy; 2025 Chandana Brothers. All Rights Reserved.</p>
+    </div>
+  </footer>
+
   <script>
-    const canvas = document.getElementById("effects");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
+    // Reveal on scroll
+    const sections=document.querySelectorAll('section');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(ent=>{ if(ent.isIntersecting) ent.target.classList.add('visible'); });
+    },{threshold:0.2});
+    sections.forEach(s=>observer.observe(s));
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Festive particles
+    const canvas=document.getElementById("particles");
+    const ctx=canvas.getContext("2d");
+    function resizeCanvas(){
+      canvas.width=window.innerWidth;
+      canvas.height=document.querySelector(".hero").offsetHeight;
     }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    resizeCanvas(); window.addEventListener("resize",resizeCanvas);
 
-    const confettiColors = ["#e85f30","#e8dc30","#00a89a","#ff4081","#3f51b5"];
-    const balloonColors = ["#ff1744","#ff9100","#ffea00","#00e676","#2979ff","#d500f9"];
-
-    class Particle {
-      constructor(x, y, type, color) {
-        this.x = x;
-        this.y = y;
-        this.type = type;
-        this.color = color || confettiColors[Math.floor(Math.random() * confettiColors.length)];
-        this.life = 0;
-        this.maxLife = 100 + Math.random() * 40;
-        this.size = 2 + Math.random() * 3;
-
-        if (type === "confetti") {
-          this.speedX = (Math.random() - 0.5) * 6;
-          this.speedY = (Math.random() - 0.5) * 6;
-        }
-        if (type === "sparkle") {
-          this.size = 1 + Math.random() * 2;
-          this.maxLife = 50 + Math.random() * 30;
-        }
-        if (type === "firework") {
-          this.speedX = (Math.random() - 0.5) * 0.5;
-          this.speedY = -6 - Math.random() * 2;
-          this.size = 3;
-          this.trail = [];
-        }
-        if (type === "fireworkParticle") {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = Math.random() * 5;
-          this.speedX = Math.cos(angle) * speed;
-          this.speedY = Math.sin(angle) * speed;
-          this.size = 2 + Math.random() * 2;
-        }
-        if (type === "balloon") {
-          this.size = 16 + Math.random() * 12;
-          this.speedX = (Math.random() - 0.5) * 0.4;
-          this.speedY = -0.6 - Math.random() * 1.2;
-          this.wiggle = Math.random() * Math.PI * 2;
-          this.popHeight = canvas.height * (0.15 + Math.random() * 0.15); // 70–85% screen height
-        }
+    class Particle{
+      constructor(){this.reset();}
+      reset(){
+        this.x=Math.random()*canvas.width;
+        this.y=Math.random()*canvas.height;
+        this.size=Math.random()*3+1;
+        this.speedY=0.3+Math.random()*0.7;
+        this.color=["#e85f30","#00cfc1","#ffd700"][Math.floor(Math.random()*3)];
+        this.alpha=0.5+Math.random()*0.5;
       }
-
-      update() {
-        this.life++;
-        if (this.type === "confetti") {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          this.speedY += 0.05;
-        }
-        if (this.type === "sparkle") {
-          this.y -= 0.3;
-        }
-        if (this.type === "firework") {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          this.trail.push({ x: this.x, y: this.y });
-          if (this.trail.length > 10) this.trail.shift();
-          if (this.speedY > -2 || this.life > this.maxLife) {
-            for (let i = 0; i < 30; i++) {
-              particles.push(new Particle(this.x, this.y, "fireworkParticle", confettiColors[Math.floor(Math.random() * confettiColors.length)]));
-            }
-            this.life = this.maxLife;
-          }
-        }
-        if (this.type === "fireworkParticle") {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          this.speedY += 0.05;
-        }
-        if (this.type === "balloon") {
-          this.x += Math.sin(this.life / 20 + this.wiggle) * 0.5;
-          this.y += this.speedY;
-          if (this.y < this.popHeight && !this.popping) {
-            this.popping = true;
-            this.maxLife = this.life + 30;
-            // mini confetti burst 🎊
-            for (let i = 0; i < 12; i++) {
-              let p = new Particle(this.x, this.y, "confetti");
-              p.speedX = (Math.random() - 0.5) * 4;
-              p.speedY = (Math.random() - 0.5) * 4;
-              particles.push(p);
-            }
-          }
-        }
-      }
-
-      draw() {
-        ctx.save();
-        if (this.type === "confetti") {
-          ctx.fillStyle = this.color;
-          ctx.fillRect(this.x, this.y, this.size, this.size);
-        }
-        if (this.type === "sparkle") {
-          ctx.fillStyle = this.color;
-          ctx.fillRect(this.x, this.y, this.size, this.size);
-        }
-        if (this.type === "firework") {
-          ctx.fillStyle = "#fff";
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = "rgba(255,255,255,0.5)";
-          ctx.beginPath();
-          for (let t of this.trail) ctx.lineTo(t.x, t.y);
-          ctx.stroke();
-        }
-        if (this.type === "fireworkParticle") {
-          ctx.fillStyle = this.color;
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        if (this.type === "balloon") {
-          const fade = this.popping ? 1 - (this.life / this.maxLife) : 1;
-          ctx.globalAlpha = fade;
-          ctx.beginPath();
-          ctx.ellipse(this.x, this.y, this.size * 0.7, this.size, 0, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(this.x - this.size * 0.2, this.y - this.size * 0.3, this.size * 0.2, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(255,255,255,0.6)";
-          ctx.fill();
-          ctx.beginPath();
-          const stringLength = 20;
-          const sway = Math.sin(this.life / 10) * 2;
-          ctx.moveTo(this.x, this.y + this.size);
-          ctx.lineTo(this.x + sway, this.y + this.size + stringLength);
-          ctx.strokeStyle = "#555";
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-        ctx.restore();
-      }
-
-      isDead() {
-        return this.life > this.maxLife;
+      update(){this.y+=this.speedY; if(this.y>canvas.height) this.reset();}
+      draw(){
+        ctx.globalAlpha=this.alpha;
+        ctx.fillStyle=this.color;
+        ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill(); ctx.globalAlpha=1;
       }
     }
-
-    function addConfettiBurst() {
-      for (let i = 0; i < 50; i++) {
-        particles.push(new Particle(canvas.width/2, canvas.height/2, "confetti"));
-      }
-    }
-    function addBalloons() {
-      const count = 2 + Math.floor(Math.random() * 7);
-      for (let i = 0; i < count; i++) {
-        let x = Math.random() * canvas.width;
-        let y = canvas.height + 40;
-        let b = new Particle(x, y, "balloon", balloonColors[Math.floor(Math.random() * balloonColors.length)]);
-        particles.push(b);
-      }
-    }
-    function addSparkle() {
-      particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height, "sparkle", "#fff"));
-    }
-    function launchFirework() {
-      particles.push(new Particle(Math.random() * canvas.width, canvas.height, "firework", "#fff"));
-    }
-
-    function animate() {
+    const particles=Array.from({length:70},()=>new Particle());
+    function animate(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach((p,i) => {
-        p.update();
-        p.draw();
-        if (p.isDead()) particles.splice(i,1);
-      });
+      particles.forEach(p=>{p.update();p.draw();});
       requestAnimationFrame(animate);
     }
-
-    // effects schedule
-    setInterval(addSparkle, 50);
-    setInterval(launchFirework, 2000);
-    setInterval(() => {
-      addConfettiBurst();
-      setTimeout(addBalloons, 100);
-    }, 200);
-
     animate();
   </script>
 </body>
