@@ -1,1 +1,227 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>Chandana Brothers – Fashion & Lifestyle</title> <!-- Google Fonts --> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> <style> /* ---------- Reset & Base ---------- */ * { box-sizing: border-box; margin: 0; padding: 0; } html, body { height: 100%; } body { font-family: 'Inter', sans-serif; color: #333; background: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } html { scroll-behavior: smooth; } /* ---------- HERO ---------- */ header { position: relative; height: 100vh; width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; } header::before { content: ""; position: absolute; inset: 0; background: url('assets/images/hero-chandana.jpg') center/cover no-repeat; transform: scale(1); animation: zoomLoop 8s ease-in-out infinite alternate; } header::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.25); animation: overlayLoop 8s ease-in-out infinite alternate; } @keyframes zoomLoop { from { transform: scale(1); } to { transform: scale(1.08); } } @keyframes overlayLoop { from { background: rgba(0,0,0,0.25); } to { background: rgba(0,0,0,0.45); } } /* Logo Top Left */ .logo{ background-color: white; } .hero-logo::before{ background-color: white; margin: 10px; } .hero-logo { position: absolute; top: 20px; left: 20px; width: clamp(80px, 10vw, 120px); z-index: 3; border-radius: 8px; animation: fadeInDown 1s ease forwards; } .hero-inner { position: relative; z-index: 2; color: #fff; padding: 0 20px; max-width: 800px; } header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 12px; opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.2s; color: #e8dc30; } header p { font-size: clamp(1rem, 1.6vw, 1.3rem); margin-bottom: 20px; opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.4s; } .btn { display: inline-block; padding: 12px 28px; border-radius: 32px; background: #e85f30; color: #111; font-size: 1rem; font-weight: 500; text-decoration: none; transition: transform 0.2s ease, background 0.2s ease; opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.6s; } .btn:hover { transform: scale(1.05); background: #00a89a; } @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } } /* ---------- About ---------- */ #about { width: 100%; padding: 80px 20px; background: #faf7f5; opacity: 0; transform: translateY(28px); transition: all 0.7s ease; } #about.visible { opacity: 1; transform: translateY(0); } .about-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; } .about-image { flex: 1 1 45%; min-height: 320px; border-radius: 16px; background: url('assets/images/about-fashion.jpg') center/cover no-repeat; box-shadow: 0 6px 16px rgba(0,0,0,0.08); } .about-text { flex: 1 1 50%; } .about-text h2 { position: relative; display: inline-block; font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.6vw, 2.2rem); margin-bottom: 28px; color: #e85f30; } .about-text h2::after { content: ""; position: absolute; left: 0; bottom: -8px; height: 3px; width: 0; background: #969595; border-radius: 2px; animation: underlineGrow 1s ease forwards; animation-delay: 0.4s; } @keyframes underlineGrow { from { width: 0; } to { width: 100%; } } .about-text .highlight { color: #a3ad11; } .about-text p { font-size: 1rem; line-height: 1.6; margin-bottom: 16px; color: #444; } /* ---------- Contact ---------- */ #contact { width: 100%; background: #1d1d1d; padding: 80px 20px; opacity: 0; transform: translateY(28px); transition: all 0.7s ease; } #contact.visible { opacity: 1; transform: translateY(0); } #contact h2 { text-align: center; color: #e85f30; font-family: 'Playfair Display', serif; margin-bottom: 40px; font-size: clamp(1.6rem, 2.5vw, 2rem); position: relative; display:block; } /* #contact h2::after { content: ""; position: absolute; left: 0; bottom: -8px; height: 3px; width: 0; background: #00cfc1; border-radius: 2px; animation: underlineGrow 1s ease forwards; animation-delay: 0.4s; } */ .contact-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; } .contact-details { flex: 1 1 42%; min-width: 260px; display: flex; flex-direction: column; gap: 18px; } .contact-card { display: flex; gap: 14px; padding: 18px 20px; background: #222; border-radius: 16px; transition: transform 0.25s ease, background 0.25s ease; } .contact-card:hover { transform: translateY(-4px); background: #2c2c2c; } .contact-card .icon { background: #010c0b; color: #111; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; } .contact-card h3 { margin: 0 0 4px; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #e85f30; } .contact-card p { margin: 0; font-size: 0.95rem; color: #bbb; line-height: 1.5; } .contact-map { flex: 1 1 52%; min-width: 260px; } .contact-map iframe { border-radius: 12px; border: 0; width: 100%; height: min(420px, 50vh); } /* ---------- Footer ---------- */ footer { background: #e85f30; padding: 30px 20px; text-align: center; border-top: 2px solid #8d2502; opacity: 0; transform: translateY(28px); transition: all 0.7s ease; } footer.visible { opacity: 1; transform: translateY(0); } footer p { margin: 0 0 10px; font-size: 0.9rem; color: #fff; } footer a { color: #ebf1f1; text-decoration: none; margin: 0 8px; font-size: 0.95rem; transition: color 0.2s ease; } footer a:hover { color: #111; } /* ---------- Responsive ---------- */ @media (max-width: 768px) { #about, #contact { padding: 48px 16px; } .about-container { flex-direction: column; } .about-image { width: 100%; min-height: 240px; } } @media (max-width: 480px) { .hero-logo { width: 70px; top: 12px; left: 12px; } .contact-container { flex-direction: column; } } </style> </head> <body> <!-- HERO --> <header> <div class="logo"><img class="hero-logo" src="assets/images/logo.jpg" alt="Chandana Brothers Logo"></div> <div class="hero-inner"> <h1>Chandana's Festival of Gifts</h1> <p>Festival of Gifts • Fashion • Lifestyle • Tradition</p> <a class="btn" href="#about">Explore Collections</a> </div> </header> <!-- ABOUT --> <section id="about"> <div class="about-container"> <div class="about-image"></div> <div class="about-text"> <h2>Why <span class="highlight">Chandana Brothers?</span></h2> <p> At Chandana Brothers, we bring together <strong>fashion, lifestyle, and tradition</strong> under one roof. From elegant sarees and menswear to vibrant kidswear and festive attire, our collections are designed to make every occasion unforgettable. </p> <p> With decades of trust and excellence, we continue to be your <span class="highlight">first choice</span> for celebrations, style, and sophistication. </p> </div> </div> </section> <!-- CONTACT --> <section id="contact"> <h2>Contact Us</h2> <div class="contact-container"> <div class="contact-details"> <div class="contact-card"> <span class="icon">📍</span> <div> <h3>Address</h3> <p> Patny Central Mall, 262,<br> Sarojini Devi Rd, Avulamanda,<br> Kalasiguda, Secunderabad,<br> Telangana 500003 </p> </div> </div> <div class="contact-card"> <span class="icon">📞</span> <div> <h3>Phone</h3> <p>+91 40 1234 5678</p> </div> </div> <div class="contact-card"> <span class="icon">✉️</span> <div> <h3>Email</h3> <p>info@chandanabrothers.com</p> </div> </div> <div class="contact-card"> <span class="icon">🕒</span> <div> <h3>Hours</h3> <p>Mon–Sun, 10:00 AM – 9:00 PM</p> </div> </div> </div> <div class="contact-map"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3102568952427!2d78.49382041539434!3d17.438694606056097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a226f2f28a1%3A0xd39788f7ef67e1ef!2sChandana%20Brothers%20Patny%20Center!5e0!3m2!1sen!2sin!4v1694352020012!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe> </div> </div> </section> <!-- FOOTER --> <footer> <p>&copy; 2025 Chandana Brothers. All Rights Reserved.</p> <div> <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">YouTube</a> </div> </footer> <script> // Reveal animation for sections const sections = document.querySelectorAll('section, footer'); const revealObserver = new IntersectionObserver(entries => { entries.forEach(ent => { if (ent.isIntersecting) ent.target.classList.add('visible'); }); }, { threshold: 0.15 }); sections.forEach(s => revealObserver.observe(s)); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandana Brothers - Festive Offers</title>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffe600;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .curved-background {
+            position: relative;
+            width: 100%;
+            min-height: 900px;
+            overflow: hidden;
+        }
+
+        .curved-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/images/bannerBG.png') center/cover no-repeat;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            z-index: -1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px;
+            z-index: 1;
+        }
+
+        .diya-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 80px;
+            opacity: 0.8;
+            animation: flicker 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.5; }
+        }
+
+        .slider {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 700px;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease;
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            max-width: 80%;
+            border-radius: 20px;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .offers {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .offers.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .offer-card {
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .offer-card img {
+            max-width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .text-overlay {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+            }
+
+            .offers {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="particles"></div>
+
+    <div class="curved-background">
+        <img src="assets/images/logo.png" alt="Chandana Brothers Logo" class="logo">
+        <img src="assets/images/diya.png" alt="Diya Icon" class="diya-icon">
+
+        <div class="slider">
+            <div class="slide active">
+                <img src="assets/images/banner.png" alt="Festive Banner 1">
+                <div class="text-overlay">ఇప్పుడు షాపింగ్ కూడా పండుగే ప్రతీ కొనుగోలుపై అదిరే డిస్కౌంట్</div>
+            </div>
+
+            <div class="slide">
+                <img src="assets/images/banner.png" alt="Festive Banner 2">
+                <div class="text-overlay">ఇకపై స్పెషల్ ఆఫర్లు అందుబాటులో ఉన్నాయి</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="offers">
+        <div class="offer-card">
+            <img src="assets/images/thermo.png" alt="Thermo Flask Gift">
+            <h3>Thermo Flask Gift</h3>
+            <p>Get a free Thermo Flask with selected purchases!</p>
+        </div>
+        <div class="offer-card">
+            <img src="assets/images/digital.png" alt="Digital Weighing Scale">
+            <h3>Digital Weighing Scale</h3>
+            <p>Special festive gift on bulk orders.</p>
+        </div>
+    </section>
+
+    <script>
+        // ParticleJS config
+        particlesJS('particles', {
+            particles: {
+                number: { value: 80 },
+                shape: { type: 'particles' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: { speed: 1 }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: 'repulse' } }
+            }
+        });
+
+        // Slider logic
+        let slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }, 5000);
+
+        showSlide(currentIndex);
+
+        // Show offers on scroll
+        const offersSection = document.querySelector('.offers');
+        window.addEventListener('scroll', () => {
+            if (offersSection.getBoundingClientRect().top < window.innerHeight - 100) {
+                offersSection.classList.add('visible');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
