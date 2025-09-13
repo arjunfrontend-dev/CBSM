@@ -314,6 +314,40 @@ font-size: 2rem; color: #8B0000; margin-bottom: 20px;
       .contact-wrapper { grid-template-columns:1fr; }
       .contact-info { grid-template-columns:1fr; }
     }
+
+    /* Very large screens (e.g., 1920px and up) */
+@media (min-width: 1920px) {
+    .slider {
+         margin-top: 10vh;
+}
+}
+/* Large desktops */
+@media (min-width: 1200px) and (max-width: 1919px) {
+    .slider {
+        margin-top: 5vh;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .slider {
+        margin-top: -45vh;
+    }
+}
+
+/* Small devices (mobiles) */
+@media (max-width: 767px) and (min-width: 481px) {
+    .slider {
+        margin-top: -56vh;
+    }
+}
+
+/* Extra small devices (old phones) */
+@media (max-width: 480px) {
+    .slider {
+        margin-top: -78vh;
+    }
+}
   </style>
 </head>
 <body>
